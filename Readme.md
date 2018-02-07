@@ -70,3 +70,4 @@
    3. https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property
    4. https://boto3.readthedocs.io/en/latest/reference/services/sts.html#STS.Client.get_federation_token
    5. http://adventure-us.guide/uploading-images-s3-using-javascript-aws-sdk/
+   6. https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album.html
