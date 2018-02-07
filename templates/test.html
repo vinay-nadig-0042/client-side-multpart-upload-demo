@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.190.0.min.js"></script>
+</head>
+<body>
+	<input name="myFile" type="file">
+	<button id="addphoto" onclick="uploadFile()">Upload</button>
+	<script type="text/javascript">
+	var access_key_id = '{{ cred['Credentials']['AccessKeyId'] }}'
+    var session_token = '{{ cred['Credentials']['SessionToken'] }}'
+    var secret_access_key = '{{ cred['Credentials']['SecretAccessKey'] }}'
+
+    var input = document.getElementsByTagName('input')[0]
+    var file = input.files[0]
+    
+    AWS.config.update({accessKeyId: access_key_id, secretAccessKey: secret_access_key, sessionToken: session_token, region: 'ap-south-1'})
+
+    var s3 = new AWS.S3();
+
+    function uploadFile() {
+    	console.log('uploading')
+    	console.log(file)
+    	s3.upload({
+    		Bucket: '<your-bucket-name-here>',
+    		Key: file.name,
+    		Body: file},
+    		function(err, data) {
+			    if (err) {
+			     	console.log('There was an error uploading your photo: ', err);
+			    }
+			    console.log('Successfully uploaded photo.');
+			  })
+    }
+	</script>
+</body>
+</html>
